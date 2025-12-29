@@ -9,17 +9,19 @@ public class DriverClass {
     private static final BlackJackViewModel viewModel = new BlackJackViewModel();
 
     public static void main(String[] args) {
-        syso.println("-------------------------------------------------------");
-        syso.println("Welcome to BLACKJACK by Arshdeep Singh and Xingjian Li!");
-        syso.println("-------------------------------------------------------");
-        syso.println("Bet and make your card values closer to 21, but not beyond.");
-        syso.println("HIT to add another card.");
-        syso.println("STAY to stop taking more cards.");
-        syso.println("SURRENDER only allowed in the first decision.");
-        syso.println("If your card values reach exactly 21, you BLACKJACK!");
-        syso.println("-------------------------------------------------------");
-        syso.println("Beat the DEALER and enjoy your time!");
-        syso.println("-------------------------------------------------------");
+        syso.println("""
+                -------------------------------------------------------
+                Welcome to BLACKJACK by Arshdeep Singh and Xingjian Li!
+                -------------------------------------------------------
+                Bet and make your card values closer to 21, but not beyond.
+                HIT to add another card.
+                STAY to stop taking more cards.
+                SURRENDER only allowed in the first decision.
+                If your card values reach exactly 21, you BLACKJACK!
+                -------------------------------------------------------
+                Beat the DEALER and enjoy your time!
+                -------------------------------------------------------""");
+
         initPlayers();
         viewModel.initDealer();
         syso.println("Lets place the bets!");
@@ -72,8 +74,7 @@ public class DriverClass {
     private static Player initPlayerName() {
         var playerName = "";
         var playerNumber = 0;
-        if (viewModel.getPlayers().size() < 2)
-            playerNumber = viewModel.getPlayers().size() + 1;
+        if (viewModel.getPlayers().size() < 2) playerNumber = viewModel.getPlayers().size() + 1;
         else playerNumber = viewModel.getPlayers().size();
         while (true) {
             syso.println("What is the name of player " + playerNumber);
@@ -256,8 +257,7 @@ public class DriverClass {
                         } else {
                             var playerMoney = player.getMoney() + money;
                             player.setMoney(playerMoney);
-                            if (player.getMoney() < 1)
-                                syso.println("Your funds are not enough to continue.");
+                            if (player.getMoney() < 1) syso.println("Your funds are not enough to continue.");
                             else break;
                         }
                     } catch (InputMismatchException e) {

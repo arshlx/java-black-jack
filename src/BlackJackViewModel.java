@@ -88,11 +88,11 @@ public class BlackJackViewModel {
                     player.setMoney(money);
                 }
                 case BLACKJACK -> {
-                    money -= (1.5 * player.getBet());
+                    money -= (float) (1.5 * player.getBet());
                     player.setMoney(money);
                 }
                 case SURRENDER -> {
-                    money -= (0.5 * player.getBet());
+                    money -= (float) (0.5 * player.getBet());
                     player.setMoney(money);
                 }
             }
