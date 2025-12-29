@@ -11,7 +11,7 @@ public class DriverClass {
     public static void main(String[] args) {
         syso.println("""
                 -------------------------------------------------------
-                Welcome to BLACKJACK by Arshdeep Singh and Xingjian Li!
+                Welcome to BLACKJACK by Arshdeep Singh!
                 -------------------------------------------------------
                 Bet and make your card values closer to 21, but not beyond.
                 HIT to add another card.
