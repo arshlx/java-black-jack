@@ -181,9 +181,7 @@ public class DriverClass {
                                 } else syso.println(player.getPlayerName() + ", you cannot surrender.");
                                 exitLoop = true;
                             }
-                            default -> {
-                                syso.println("Invalid entry, please try again.");
-                            }
+                            default -> syso.println("Invalid entry, please try again.");
                         }
                     } catch (InputMismatchException e) {
                         scan.nextLine();

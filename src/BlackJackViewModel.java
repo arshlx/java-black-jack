@@ -45,32 +45,26 @@ public class BlackJackViewModel {
             nextCardIndex--;
         }
         switch (dealer.getState()) {
-            case BLACKJACK -> {
-                players.forEach(player -> {
-                    if (player.getState() == PlayerState.BLACKJACK) {
-                        player.setState(PlayerState.PUSH);
-                    }
+            case BLACKJACK -> players.forEach(player -> {
+                if (player.getState() == PlayerState.BLACKJACK) {
+                    player.setState(PlayerState.PUSH);
+                }
 
-                });
-            }
-            case BUST -> {
-                players.forEach(player -> {
-                    if (player.getState() == PlayerState.BUST) {
-                        player.setState(PlayerState.PUSH);
-                    } else if (player.getState() == PlayerState.STAY) {
+            });
+            case BUST -> players.forEach(player -> {
+                if (player.getState() == PlayerState.BUST) {
+                    player.setState(PlayerState.PUSH);
+                } else if (player.getState() == PlayerState.STAY) {
+                    player.setState(PlayerState.WON);
+                }
+            });
+            case DONE -> players.forEach(player -> {
+                if (player.getState() == PlayerState.STAY) {
+                    if ((BLACKJACK - player.getTotal()) < (BLACKJACK - dealer.getTotal())) {
                         player.setState(PlayerState.WON);
-                    }
-                });
-            }
-            case DONE -> {
-                players.forEach(player -> {
-                    if (player.getState() == PlayerState.STAY) {
-                        if ((BLACKJACK - player.getTotal()) < (BLACKJACK - dealer.getTotal())) {
-                            player.setState(PlayerState.WON);
-                        } else player.setState(PlayerState.LOST);
-                    }
-                });
-            }
+                    } else player.setState(PlayerState.LOST);
+                }
+            });
         }
         setPlayerRewards();
     }
